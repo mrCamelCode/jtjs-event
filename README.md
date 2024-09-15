@@ -2,52 +2,54 @@
 
 Fully typed for beautiful TS development.
 
-### API Examples
+### How to Use
 
-Create your event:
-```ts
-import { Event } from '@jtjs/event';
+1. Create your event:
+    ```ts
+    import { Event } from '@jtjs/event';
 
-type ThemeChangeHandler = (themeName: string) => void;
+    type ThemeChangeHandler = (themeName: string) => void;
 
-const onThemeChange = new Event<ThemeChangeHandler>();
-```
+    const onThemeChange = new Event<ThemeChangeHandler>();
+    ```
 
-Subscribe to your event:
-```ts
-onThemeChange.subscribe((themeName) => {
-  console.log(`Theme changed to ${themeName}!`);
-});
-```
+1. Subscribe to your event...
+    - Until you unsubscribe:
+        ```ts
+        onThemeChange.subscribe((themeName) => {
+          console.log(`Theme changed to ${themeName}!`);
+        });
+        ```
 
-Subscribe to your event for one trigger:
-```ts
-onThemeChange.once((themeName) => {
-  console.log('Just once!');
-});
-```
+    - For just one trigger:
+        ```ts
+        onThemeChange.once((themeName) => {
+          console.log('Just once!');
+        });
+        ```
 
-Unsubscribe from your event (method 1):
-```ts
-const unsub = onThemeChange.subscribe((themeName) => {
-  console.log('beep boop');
-});
+1. Trigger your event:
+    ```ts
+    onThemeChange.trigger('light');
+    ```
 
-unsub();
-```
+1. Unsubscribe from your event...
+    - With the return from `subscribe`:
+        ```ts
+        const unsub = onThemeChange.subscribe((themeName) => {
+          console.log('beep boop');
+        });
 
-Unsubscribe from your event (method 2):
-```ts
-const handler = (themeName: string) => {
-  console.log('beep boop');
-};
+        unsub();
+        ```
 
-onThemeChange.subscribe(handler);
+    - With the reference to your handler:
+        ```ts
+        const handler = (themeName: string) => {
+          console.log('beep boop');
+        };
 
-onThemeChange.unsubscribe(handler);
-```
+        onThemeChange.subscribe(handler);
 
-Trigger your event:
-```ts
-onThemeChange.trigger('light');
-```
+        onThemeChange.unsubscribe(handler);
+        ```
