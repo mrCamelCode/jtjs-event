@@ -1,6 +1,6 @@
 {
   "name": "@jtjs/event",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A simple and powerful object-oriented event implementation for Node and browser.",
   "type": "module",
   "license": "MIT",
@@ -10,12 +10,17 @@
   "module": "./dist/jtjs_event.js",
   "exports": {
     ".": {
-      "import": "./dist/jtjs_event.js"
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/jtjs_event.js"
+      }
     }
   },
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && npm run build:types",
+    "build:types": "tsc --project tsconfig.build.json",
     "preview": "vite preview",
     "test": "vitest"
   },
