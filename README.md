@@ -1,3 +1,5 @@
+Our documentation got a glow-up! You can now find documentation on other JTJS modules at [jtjs.dev](https://jtjs.dev).
+
 ## A simple, object-oriented event implementation for Node and browser.
 
 Fully typed for beautiful TS development.
